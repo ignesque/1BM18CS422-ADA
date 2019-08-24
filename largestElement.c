@@ -30,7 +30,12 @@ int main(){
 		scanf("%d",&arr[i]);
 	printf("\nHow many largest elements to be fetched?(Range=%d):",n);
 	scanf("%d",&k);
+	if(k<=n){
 	bubbleSort(arr,n);
 	getLarge(arr,n,k);
+	}
+	else
+		printf("Invalid Index");
+	printf("\n");
 	return 0;
 }
