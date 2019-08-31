@@ -11,11 +11,11 @@ void bubbleSort(int A[],int n)
 	for(i=0;i<n;i++)
 	{
 		for(j=0;j<=n-i-1;j++)
-		{
+		{  
+                        bubblecount++
 			if(A[j]>A[j+1])
 			{
 				temp=A[j];
-				bubblecount++;
 				A[j]=A[j+1];
 				A[j+1]=temp;
 			}
@@ -31,9 +31,9 @@ void selectionSort(int A[],int n)
 	{	min=i;
 		for(j=i+1;j<=n-1;j++)
 		{
+                        selectioncount++;
 			if(A[min]>A[j])
 			{	
-				selectioncount++;
 				min=j;
 			}
 		}
@@ -64,10 +64,9 @@ void merge(int A[],int i1,int j1,int i2,int j2)
 	k=0;
 	while(i<=j1 && j<=j2)
 	{
-
+                mergecount++;
 		if(A[i]<A[j])
 			{
-			mergecount++;
 			temp[k++]=A[i++];}
 		else
 			{
