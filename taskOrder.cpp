@@ -1,17 +1,14 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 
-vector<unordered_set<int> > make_graph(int numTasks, 
-			vector<pair<int, int> >& prerequisites) 
-{ 
+vector<unordered_set<int> > make_graph(int numTasks, vector<pair<int, int> >& prerequisites) { 
 	vector<unordered_set<int> > graph(numTasks); 
 	for (auto pre : prerequisites) 
 		graph[pre.second].insert(pre.first); 
 	return graph; 
 } 
 
-vector<int> compute_indegree(vector<unordered_set<int> >& graph) 
-{ 
+vector<int> compute_indegree(vector<unordered_set<int> >& graph) { 
 	vector<int> degrees(graph.size(), 0); 
 	for (auto neighbors : graph) 
 		for (int neigh : neighbors) 
@@ -19,9 +16,7 @@ vector<int> compute_indegree(vector<unordered_set<int> >& graph)
 	return degrees; 
 } 
 
-vector<int> findOrder(int numTasks, 
-		vector<pair<int, int> >& prerequisites) 
-{ 
+vector<int> findOrder(int numTasks,vector<pair<int, int> >& prerequisites) { 
 	vector<unordered_set<int> > graph = 
 			make_graph(numTasks, prerequisites); 
 	vector<int> degrees = compute_indegree(graph); 
@@ -45,8 +40,7 @@ vector<int> findOrder(int numTasks,
 	return toposort; 
 } 
 
-int main() 
-{ 
+int main() { 
 	int numTasks,t1,t2; 
 	cout<<"Enter the Number of tasks:";
 	cin>>numTasks;
