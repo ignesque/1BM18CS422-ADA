@@ -2,17 +2,14 @@
 int N;
 int board[100][100];
 
-int is_attack(int i,int j)
-{
+int is_attack(int i,int j){
     int k,l;
-    for(k=0;k<N;k++)
-    {
+    for(k=0;k<N;k++){
         if((board[i][k] == 1) || (board[k][j] == 1))
             return 1;
     }
    for(k=0;k<N;k++){
-       for(l=0;l<N;l++)
-        {
+       for(l=0;l<N;l++){
             if(((k+l) == (i+j)) || ((k-l) == (i-j)))
             {
                 if(board[k][l] == 1)
@@ -23,8 +20,7 @@ int is_attack(int i,int j)
     return 0;
 }
 
-int N_queen(int n)
-{
+int N_queen(int n){
    int i,j;
    if(n==0)
       return 1;
@@ -41,8 +37,7 @@ int N_queen(int n)
    return 0;
 }
 
-int main()
-{
+int main(){
    printf("Enter the size of board:");
    scanf("%d",&N);
    int i,j;
@@ -54,7 +49,7 @@ int main()
    for(i=0;i<N;i++){
       for(j=0;j<N;j++)
          if(board[i][j]==1)
-         printf("Q ");
+         printf("q ");
          else
          printf(". ");
       printf("\n");
