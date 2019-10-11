@@ -3,16 +3,15 @@
 
 void merge(int A[],int i1,int j1,int i2,int j2);
 
-int selectioncount=0,mergecount=0;
+int selectioncount=0,mergecount=0,bubblecount=0;
 int i,j,temp;
 void bubbleSort(int A[],int n)
 {
-	int bubblecount=0;
 	for(i=0;i<n;i++)
 	{
 		for(j=0;j<=n-i-1;j++)
 		{  
-                        bubblecount++
+            bubblecount++;
 			if(A[j]>A[j+1])
 			{
 				temp=A[j];
@@ -22,7 +21,6 @@ void bubbleSort(int A[],int n)
 		}
 
 	}
-		printf("Bubble sort : %d comparisions\n",bubblecount);
 }
 void selectionSort(int A[],int n)
 {
@@ -31,7 +29,7 @@ void selectionSort(int A[],int n)
 	{	min=i;
 		for(j=i+1;j<=n-1;j++)
 		{
-                        selectioncount++;
+            selectioncount++;
 			if(A[min]>A[j])
 			{	
 				min=j;
@@ -41,7 +39,8 @@ void selectionSort(int A[],int n)
 		A[min]=A[i];
 		A[i]=temp;
 	}
-
+    for(i=0;i<n;i++)
+        printf("%d ",A[i]);
 }
 void mergeSort(int A[],int i,int j)
 {
@@ -64,7 +63,7 @@ void merge(int A[],int i1,int j1,int i2,int j2)
 	k=0;
 	while(i<=j1 && j<=j2)
 	{
-                mergecount++;
+        mergecount++;
 		if(A[i]<A[j])
 			{
 			temp[k++]=A[i++];}
@@ -72,12 +71,15 @@ void merge(int A[],int i1,int j1,int i2,int j2)
 			{
 			temp[k++]=A[j++];}
 	}
-	while(i<=j1)
-	{temp[k++]=A[i++];}
-	while(j<=j2)
-	{temp[k++]=A[j++];}
-	for(i=i1,j=0;i<=j2;i++,j++)
-	{A[i]=temp[j];}
+	while(i<=j1){
+	    temp[k++]=A[i++];
+	}
+	while(j<=j2){
+	    temp[k++]=A[j++];
+	}
+	for(i=i1,j=0;i<=j2;i++,j++){
+	    A[i]=temp[j];
+	}
 
 }
 int main()
@@ -90,13 +92,15 @@ int main()
 	{
 		scanf("%d",&arr[i]);
 	}
-	printf("Elements in the array are\n");
+	printf("Elements in the array are ");
 	for(i=0;i<n;i++)
-	{printf("%d ",arr[i]);}
+	printf("%d ",arr[i]);
+	printf("\nSorted Elements are ");
 	selectionSort(arr,n);
 	printf("\n\nSelection sort : %d comparisions\n",selectioncount);
 	mergeSort(arr,0,n-1);
 	printf("Merge sort : %d comparisions\n",mergecount);
 	bubbleSort(arr,n);
+	printf("Bubble sort : %d comparisions\n",bubblecount);
 	return 0;
 }
