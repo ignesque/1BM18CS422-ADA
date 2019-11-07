@@ -2,3 +2,5 @@
 *.exe
 Compiles/
 .vscode/
+Example.cpp
+Another.cpp
