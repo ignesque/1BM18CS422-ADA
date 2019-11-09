@@ -1,31 +1,43 @@
-#include <stdc++.h>
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 int minCoins(int coins[], int m, int V)
 {
-    if (V == 0)
-        return 0;
-    int res = INT_MAX;
-    for (int i = 0; i < m; i++)
-    {
-        if (coins[i] <= V)
-        {
-            int sub_res = minCoins(coins, m, V - coins[i]);
+    int table[V + 1];
 
-            if (sub_res != INT_MAX && sub_res + 1 < res)
-                res = sub_res + 1;
-        }
+    table[0] = 0;
+
+    for (int i = 1; i <= V; i++)
+        table[i] = INT_MAX;
+
+    for (int i = 1; i <= V; i++)
+    {
+        for (int j = 0; j < m; j++)
+            if (coins[j] <= i)
+            {
+                int sub_res = table[i - coins[j]];
+                if (sub_res != INT_MAX && sub_res + 1 < table[i]){
+                    table[i] = sub_res + 1;
+                }
+            }
     }
-    return res;
+    return table[V];
 }
 
 int main()
 {
-    int coins[] = {9, 6, 5, 1};
-    int m = sizeof(coins) / sizeof(coins[0]);
-    int V = 11;
-    cout << "Minimum coins required is "
-         << minCoins(coins, m, V);
+    int size, v;
+    cout << "Enter number of coins:";
+    cin >> size;
+    int coins[size];
+    cout << "\n";
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Enter value of coin " << i + 1 << ":";
+        cin >> coins[i];
+    }
+    cout << "\nEnter the final value:";
+    cin >> v;
+    cout << "\nMinimum coins required is " << minCoins(coins, size, v);
     return 0;
 }
