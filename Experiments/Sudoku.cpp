@@ -1,7 +1,8 @@
-#include <bits/stdc++.h>
+#include <stdc++.h>
+#include <iostream>
 using namespace std;
 #define UNASSIGNED 0
-#define N 9
+#define N 10
 
 bool FindUnassignedLocation(int grid[N][N], int &row, int &col);
 bool isSafe(int grid[N][N], int row, int col, int num);
