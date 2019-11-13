@@ -7,7 +7,6 @@ void leastElement(int arr[],int n,int k){
 		for(j=i+1;j<n;j++){
 			if(arr[j]<arr[min])
 				min=j;
-	
 	}
 	temp=arr[i];
 	arr[i]=arr[min];
